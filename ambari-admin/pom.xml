@@ -176,16 +176,16 @@
         <groupId>org.vafer</groupId>
         <artifactId>jdeb</artifactId>
         <executions>
-            <execution>
-                <phase>none</phase>
-                <goals>
-                    <goal>jdeb</goal>
-                </goals>
-            </execution>
+          <execution>
+            <phase>none</phase>
+            <goals>
+              <goal>jdeb</goal>
+            </goals>
+          </execution>
         </executions>
         <configuration>
-            <skip>true</skip>
-            <submodules>false</submodules>
+          <skip>true</skip>
+          <submodules>false</submodules>
         </configuration>
       </plugin>
       <plugin>
@@ -234,7 +234,7 @@
       </resource>
     </resources>
   </build>
-    <profiles>
+  <profiles>
     <profile>
       <id>windows</id>
       <activation>
@@ -267,35 +267,36 @@
         <args.shell/>
       </properties>
     </profile>
-      <profile>
-        <id>pluggable-stack-definition</id>
-        <activation>
-          <activeByDefault>false</activeByDefault>
-        </activation>
-        <build>
-          <plugins>
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>exec-maven-plugin</artifactId>
-              <version>1.2.1</version>
-              <executions>
-                <execution>
-                  <id>copy-pluggable-stack-resources</id>
-                  <phase>initialize</phase>
-                  <goals>
-                    <goal>exec</goal>
-                  </goals>
-                  <configuration>
-                    <!-- Copy stack specific UI resources -->
-                    <executable>${executable.shell}</executable>
-                    <workingDirectory>${basedir}</workingDirectory>
-                    <commandlineArgs>${args.shell} ${basedir}${dirsep}copy-pluggable-stack-resources.${fileextension.shell} ${stack.distribution}</commandlineArgs>
-                  </configuration>
-                </execution>
-              </executions>
-            </plugin>
-          </plugins>
-        </build>
-      </profile>
+    <profile>
+      <id>pluggable-stack-definition</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <executions>
+              <execution>
+                <id>copy-pluggable-stack-resources</id>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <!-- Copy stack specific UI resources -->
+                  <executable>${executable.shell}</executable>
+                  <workingDirectory>${basedir}</workingDirectory>
+                  <commandlineArgs>${args.shell} ${basedir}${dirsep}copy-pluggable-stack-resources.${fileextension.shell} ${stack.distribution}
+                  </commandlineArgs>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 </project>
